@@ -57,6 +57,9 @@ projects[globalredirect][version] = "1.5"
 projects[imagecache_token][subdir] = "contrib"
 projects[imagecache_token][version] = "1.0-rc2"
 
+projects[jquery_update][subdir] = "contrib"
+projects[jquery_update][version] = "2.7"
+
 projects[libraries][subdir] = "contrib"
 projects[libraries][version] = "2.3"
 
