@@ -7504,7 +7504,8 @@ body.navbar-tray-open.navbar-vertical.navbar-fixed {
 footer a[href="http://gdgwebworks.com/"] {
   width: 86px;
   height: 40px;
-  background: url(../images/gdg-logo-small.png) top left no-repeat;
+  background: url(http://gdgwebworks.com/sites/all/themes/gdg/logo-alpha.png) top left no-repeat;
   font-size: 0px;
   display: inline-block;
+  background-size: 86px 40px;
 }
