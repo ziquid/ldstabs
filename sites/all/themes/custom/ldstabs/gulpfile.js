@@ -34,4 +34,4 @@ gulp.task('lessdev', function () {
 });
 
 // gulp default: do lessdev.
-gulp.task('default', ['lessdev']);
+gulp.task('default', ['less']);
