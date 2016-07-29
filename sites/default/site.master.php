@@ -25,6 +25,7 @@ $conf['master_modules'] = array(
     'globalredirect',
     'googleanalytics',
     'imagecache_token',
+    'jquery_update',
     'lightbox2',
     'link',
     'list',
