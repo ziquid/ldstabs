@@ -48,11 +48,14 @@ projects[field_group][version] = "1.5"
 projects[file_entity][subdir] = "contrib"
 projects[file_entity][version] = "2.0-beta3"
 
+projects[globalredirect][subdir] = "contrib"
+projects[globalredirect][version] = "1.5"
+
 projects[google_analytics][subdir] = "contrib"
 projects[google_analytics][version] = "2.3"
 
-projects[globalredirect][subdir] = "contrib"
-projects[globalredirect][version] = "1.5"
+projects[group][subdir] = "contrib"
+projects[group][version] = "1.x-dev"
 
 projects[imagecache_token][subdir] = "contrib"
 projects[imagecache_token][version] = "1.0-rc2"
