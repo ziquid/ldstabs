@@ -19,7 +19,7 @@ projects[better_formats][subdir] = "contrib"
 projects[better_formats][version] = "1.0-beta2"
 
 projects[ctools][subdir] = "contrib"
-projects[ctools][version] = "1.9"
+projects[ctools][version] = "1.10"
 
 projects[date][subdir] = "contrib"
 projects[date][version] = "2.9"
@@ -49,7 +49,7 @@ projects[file_entity][subdir] = "contrib"
 projects[file_entity][version] = "2.0-beta3"
 
 projects[google_analytics][subdir] = "contrib"
-projects[google_analytics][version] = "2.2"
+projects[google_analytics][version] = "2.3"
 
 projects[globalredirect][subdir] = "contrib"
 projects[globalredirect][version] = "1.5"
@@ -131,7 +131,7 @@ projects[ldstabs][type] = "theme"
 projects[ldstabs][subdir] = "custom"
 
 projects[bootstrap][subdir] = "contrib"
-projects[bootstrap][version] = "3.5"
+projects[bootstrap][version] = "3.6"
 
 ; Libraries
 ; Please fill the following out. Type may be one of get, git, bzr or svn,
