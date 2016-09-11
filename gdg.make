@@ -81,9 +81,11 @@ projects[master][version] = "2.0-beta4"
 projects[media][subdir] = "contrib"
 projects[media][version] = "2.0-beta2"
 
+projects[module_filter][subdir] = "contrib"
+projects[module_filter][version] = "2.0"
+
 projects[multiform][subdir] = "contrib"
 projects[multiform][version] = "1.1"
-
 
 projects[nice_menus][subdir] = "contrib"
 projects[nice_menus][version] = "2.5"

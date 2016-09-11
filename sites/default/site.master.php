@@ -39,6 +39,7 @@ $conf['master_modules'] = array(
     'media_migrate_file_types',
     'media_wysiwyg_view_mode',
     'menu',
+    'module_filter',
     'multiform',
     'nice_menus',
     'noindex_external_links',
