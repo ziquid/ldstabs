@@ -33,6 +33,9 @@ projects[diff][version] = "3.2"
 projects[ds][subdir] = "contrib"
 projects[ds][version] = "2.14"
 
+projects[email_registration][subdir] = "contrib"
+projects[email_registration][version] = "1.3"
+
 projects[entity][subdir] = "contrib"
 projects[entity][version] = "1.7"
 

@@ -17,6 +17,7 @@ $conf['master_modules'] = array(
     'ds',
     'ds_extras',
     'ds_format',
+    'email_registration',
     'entity_token',
     'entityreference',
     'features',
