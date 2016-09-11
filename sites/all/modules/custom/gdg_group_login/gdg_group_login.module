@@ -26,6 +26,42 @@ function gdg_group_login_user_login(&$edit, $account) {
 
 
 /**
+ * Implementation of hook_menu().
+ */
+function gdg_group_login_menu() {
+
+  $items = array();
+  $items['group/home'] = array(
+    'name' => 'Home',
+    'page callback' => '_gdg_group_login_group_home',
+    'type' => MENU_CALLBACK,
+    'access callback' => TRUE,
+//    'access arguments' => array('access content'),
+  );
+
+  return $items;
+
+}
+
+
+/**
+ * Redirect the user to their home group (if any), or /user (if none).
+ */
+function _gdg_group_login_group_home() {
+
+  global $user;
+
+  if ($redirect = _gdg_group_login_redirect_location($user)) {
+    drupal_goto($redirect);
+  }
+  else {
+    drupal_goto('user');
+  }
+
+}
+
+
+/**
  * Get the redirection location.
  *
  * @param stdClass $account
