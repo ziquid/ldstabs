@@ -1,0 +1,5 @@
+name = GDG Group Login
+description = Redirect to the first group of you which are a member upon login.
+core = 7.x
+package = GDG (gdgwebworks.com)
+dependencies[] = group
