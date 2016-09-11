@@ -63,6 +63,9 @@ projects[imagecache_token][version] = "1.0-rc2"
 projects[jquery_update][subdir] = "contrib"
 projects[jquery_update][version] = "2.7"
 
+projects[invite][subdir] = "contrib"
+projects[invite][version] = "4.0-beta2"
+
 projects[libraries][subdir] = "contrib"
 projects[libraries][version] = "2.3"
 
