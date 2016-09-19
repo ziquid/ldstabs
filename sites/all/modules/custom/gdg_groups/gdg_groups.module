@@ -1,0 +1,119 @@
+<?php
+/**
+ * @file
+ * The GDG Groups Module.
+ *
+ * Several tweaks to the Group module.
+ */
+
+/**
+ * Implementation of hook_user_login().
+ */
+function gdg_groups_user_login(&$edit, $account) {
+
+  $redirect = _gdg_groups_redirect_location($account);
+
+  // Unless there is already a redirection going, or the user is trying to reset
+  // his or her password, we redirect to $redirect.
+  if (empty($_GET['destination'])
+    && !is_null($redirect)
+    && (!isset($_POST['form_id']) || $_POST['form_id'] != 'user_pass_reset')) {
+    $_GET['destination'] = $redirect;
+  }
+
+}
+
+/**
+ * Implementation of hook_menu_alter().
+ */
+function gdg_groups_menu_alter(&$items) {
+
+  if (isset($items['group/%group/member'])) {
+    $items['group/%group/member']['title'] = t('List ward user(s)');
+  }
+
+  if (isset($items['group/%group/add'])) {
+    $items['group/%group/add']['title'] = t('Add ward user');
+  }
+
+}
+
+/**
+ * Implementation of hook_form_FORM_ID_alter().
+ */
+function gdg_groups_form_gadd_add_member_form_alter(&$form, &$form_state,
+  $form_id) {
+
+  $form['help1'] = array(
+    '#type' => 'markup',
+    '#markup' => t('To add an existing LDSTabs user to your ward, enter his or her username below.  Choose whether to make this person a Ward Mission Leader, and then click the &quot;Add user&quot; button.'),
+    '#prefix' => '<p class="help">',
+    '#suffix' => '</p>',
+    '#weight' => -1,
+  );
+
+  $form['help2'] = array(
+    '#type' => 'markup',
+    '#markup' => t('If your user does not yes have an account, you must first invite him or her.  Use the &quot;Create Invite by e-mail.&quot; form, below, to invite your user.  Once he or she has accepted, then you may add that user\'s account to your ward.'),
+    '#prefix' => '<p class="help">',
+    '#suffix' => '</p>',
+    '#weight' => -1,
+  );
+
+  $form['submit']['#value'] = t('Add user');
+
+}
+
+/**
+ * Implementation of hook_menu().
+ */
+function gdg_groups_menu() {
+
+  $items = array();
+  $items['group/home'] = array(
+    'name' => 'Home',
+    'page callback' => '_gdg_groups_group_home',
+    'type' => MENU_CALLBACK,
+    'access callback' => TRUE,
+//    'access arguments' => array('access content'),
+  );
+
+  return $items;
+
+}
+
+/**
+ * Redirect the user to their home group (if any), or /user (if none).
+ */
+function _gdg_groups_group_home() {
+
+  global $user;
+
+  if ($redirect = _gdg_groups_redirect_location($user)) {
+    drupal_goto($redirect);
+  }
+  else {
+    drupal_goto('user');
+  }
+
+}
+
+/**
+ * Get the redirection location.
+ *
+ * @param stdClass $account
+ *   The user account.
+ *
+ * @return string
+ *   The path to which to redirect.
+ */
+function _gdg_groups_redirect_location($account) {
+
+  // Retrieve all active memberships.
+  if ($memberships = GroupMembership::getByActiveStatus($account->uid)) {
+    $first = array_shift($memberships);
+    $redirect = 'group/' . $first->gid;
+    return $redirect;
+  }
+
+}

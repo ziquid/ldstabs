@@ -1,0 +1,6 @@
+name = GDG Groups
+description = Tweaks to the Group module.
+core = 7.x
+package = GDG (gdgwebworks.com)
+dependencies[] = group
+stylesheets[all][] = gdg_groups.css

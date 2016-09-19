@@ -58,7 +58,7 @@ $conf['master_modules'] = array(
     'views',
 
 // GDG modules
-    'gdg_group_login',
+    'gdg_groups',
     'ldstabs',
   ),
 
