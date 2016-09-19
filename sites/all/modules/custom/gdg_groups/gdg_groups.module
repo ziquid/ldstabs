@@ -44,24 +44,44 @@ function gdg_groups_menu_alter(&$items) {
 function gdg_groups_form_gadd_add_member_form_alter(&$form, &$form_state,
   $form_id) {
 
+  $group = group_load(arg(1));
+
   $form['help1'] = array(
     '#type' => 'markup',
-    '#markup' => t('To add an existing LDSTabs user to your ward, enter his or her username below.  Choose whether to make this person a Ward Mission Leader, and then click the &quot;Add user&quot; button.'),
+    '#markup' => t('To add an existing LDSTabs user to your ward, enter his or her username below.  Choose whether to make this person a Ward Mission Leader or not and then click the &quot;Add user to ward&quot; button.'),
     '#prefix' => '<p class="help">',
     '#suffix' => '</p>',
-    '#weight' => -1,
+    '#weight' => -3,
   );
 
   $form['help2'] = array(
     '#type' => 'markup',
-    '#markup' => t('If your user does not yes have an account, you must first invite him or her.  Use the &quot;Create Invite by e-mail.&quot; form, below, to invite your user.  Once he or she has accepted, then you may add that user\'s account to your ward.'),
+    '#markup' => t('If your user does not yet have an account, you must first invite him or her.  Use the &quot;Invite user to join LDSTabs&quot; form, below, to invite your user.  Once he or she has accepted, then you may add that user to your ward.'),
     '#prefix' => '<p class="help">',
     '#suffix' => '</p>',
+    '#weight' => -2,
+  );
+
+  $form['title'] = array(
+    '#type' => 'markup',
+    '#markup' => t('Add user to @ward', array('@ward' => $group->label())),
+    '#prefix' => '<h2>',
+    '#suffix' => '</h2>',
     '#weight' => -1,
   );
 
-  $form['submit']['#value'] = t('Add user');
+  $form['submit']['#value'] = t('Add user to ward');
 
+}
+
+/**
+ * Implementation of hook_block_view_MODULE_DELTA_alter().
+ */
+function gdg_groups_block_view_invite_invite_add_invite_by_email_alter(&$data,
+  $block) {
+
+  $data['subject'] =
+    t('Invite user to join LDSTabs');
 }
 
 /**
