@@ -24,17 +24,51 @@ function gdg_groups_user_login(&$edit, $account) {
 }
 
 /**
+ * Implementation of hook_theme().
+ */
+function gdg_groups_theme($existing, $type, $theme, $path) {
+
+  return array(
+    'gdg_groups_ward_admin' => array(
+      'template' => 'templates/gdg_groups_ward_admin',
+      'variables' => array(
+        'group' => NULL,
+      )
+    ),
+  );
+
+}
+
+/**
  * Implementation of hook_menu_alter().
  */
 function gdg_groups_menu_alter(&$items) {
 
+  // Give more verbose titles.
   if (isset($items['group/%group/member'])) {
-    $items['group/%group/member']['title'] = t('List ward user(s)');
+    $items['group/%group/member']['title'] = 'List ward user(s)';
   }
 
   if (isset($items['group/%group/add'])) {
-    $items['group/%group/add']['title'] = t('Add ward user');
+    $items['group/%group/add']['title'] = 'Add ward user';
   }
+
+  if (isset($items['group/%group/edit'])) {
+    $items['group/%group/edit']['title'] = 'Edit ward information';
+  }
+
+  // Add Administration menu.
+  $items['group/%group/admin'] = array(
+    'title' => 'Ward Administration',
+    'page callback' => 'gdg_groups_ward_admin',
+    'page arguments' => array(1),
+    'access callback' => $items['group/%group/edit']['access callback'],
+    'access arguments' => $items['group/%group/edit']['access arguments'],
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 10,
+  );
+
+  $items['group/%group/admin/edit'] = $items['group/%group/edit'];
 
 }
 
@@ -73,6 +107,43 @@ function gdg_groups_form_gadd_add_member_form_alter(&$form, &$form_state,
   $form['submit']['#value'] = t('Add user to ward');
 
 }
+
+/**
+ * Implementation of hook_form_FORM_ID_alter().
+ */
+function gdg_groups_form_group_member_overview_form_alter(&$form, &$form_state,
+  $form_id) {
+
+  $group = group_load(arg(1));
+
+  $form['help1'] = array(
+    '#type' => 'markup',
+    '#markup' => t('This form allows you to manage existing users of your ward.'),
+    '#prefix' => '<p class="help">',
+    '#suffix' => '</p>',
+    '#weight' => -3,
+  );
+
+  $form['help2'] = array(
+    '#type' => 'markup',
+    '#markup' => t('If you wish to add a new user to your ward or invite a user to LDSTabs, you must use the <a href="add">Add ward user</a> screen.'),
+    '#prefix' => '<p class="help">',
+    '#suffix' => '</p>',
+    '#weight' => -2,
+  );
+/*
+  $form['title'] = array(
+    '#type' => 'markup',
+    '#markup' => t('Add user to @ward', array('@ward' => $group->label())),
+    '#prefix' => '<h2>',
+    '#suffix' => '</h2>',
+    '#weight' => -1,
+  );
+
+  $form['submit']['#value'] = t('Add user to ward');
+*/
+}
+
 
 /**
  * Implementation of hook_block_view_MODULE_DELTA_alter().
@@ -135,5 +206,17 @@ function _gdg_groups_redirect_location($account) {
     $redirect = 'group/' . $first->gid;
     return $redirect;
   }
+
+}
+
+/**
+ * Show the Adminstration menu.
+ */
+function gdg_groups_ward_admin($group) {
+
+  return array(
+    '#theme' => 'gdg_groups_ward_admin',
+    '#group' => $group,
+  );
 
 }
