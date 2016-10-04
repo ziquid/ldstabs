@@ -47,14 +47,21 @@ function gdg_groups_menu_alter(&$items) {
   // Give more verbose titles.
   if (isset($items['group/%group/member'])) {
     $items['group/%group/member']['title'] = 'List ward user(s)';
+    $items['group/%group/member']['type'] = MENU_CALLBACK;
   }
 
   if (isset($items['group/%group/add'])) {
     $items['group/%group/add']['title'] = 'Add ward user';
+    $items['group/%group/add']['type'] = MENU_CALLBACK;
   }
 
   if (isset($items['group/%group/edit'])) {
     $items['group/%group/edit']['title'] = 'Edit ward information';
+    $items['group/%group/edit']['type'] = MENU_CALLBACK;
+  }
+
+  if (isset($items['group/%group/view'])) {
+    $items['group/%group/view']['title'] = 'Progress Record';
   }
 
   // Add Administration menu.
@@ -131,17 +138,7 @@ function gdg_groups_form_group_member_overview_form_alter(&$form, &$form_state,
     '#suffix' => '</p>',
     '#weight' => -2,
   );
-/*
-  $form['title'] = array(
-    '#type' => 'markup',
-    '#markup' => t('Add user to @ward', array('@ward' => $group->label())),
-    '#prefix' => '<h2>',
-    '#suffix' => '</h2>',
-    '#weight' => -1,
-  );
 
-  $form['submit']['#value'] = t('Add user to ward');
-*/
 }
 
 
