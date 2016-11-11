@@ -3,7 +3,7 @@ core = 7.x
 api = 2
 
 ; Core
-projects[drupal][version] = "7.50"
+projects[drupal][version] = "7.51"
 
 ; Modules
 projects[admin_menu][subdir] = "contrib"
@@ -19,7 +19,7 @@ projects[better_formats][subdir] = "contrib"
 projects[better_formats][version] = "1.0-beta2"
 
 projects[ctools][subdir] = "contrib"
-projects[ctools][version] = "1.10"
+projects[ctools][version] = "1.11"
 
 projects[date][subdir] = "contrib"
 projects[date][version] = "2.9"
@@ -37,10 +37,10 @@ projects[email_registration][subdir] = "contrib"
 projects[email_registration][version] = "1.3"
 
 projects[entity][subdir] = "contrib"
-projects[entity][version] = "1.7"
+projects[entity][version] = "1.8"
 
 projects[entityreference][subdir] = "contrib"
-projects[entityreference][version] = "1.1"
+projects[entityreference][version] = "1.2"
 
 projects[features][subdir] = "contrib"
 projects[features][version] = "2.10"
@@ -85,7 +85,7 @@ projects[master][subdir] = "contrib"
 projects[master][version] = "2.0-beta4"
 
 projects[media][subdir] = "contrib"
-projects[media][version] = "2.0-beta2"
+projects[media][version] = "2.0-beta5"
 
 projects[module_filter][subdir] = "contrib"
 projects[module_filter][version] = "2.0"
@@ -142,7 +142,7 @@ projects[ldstabs][type] = "theme"
 projects[ldstabs][subdir] = "custom"
 
 projects[bootstrap][subdir] = "contrib"
-projects[bootstrap][version] = "3.6"
+projects[bootstrap][version] = "3.8"
 
 ; Libraries
 ; Please fill the following out. Type may be one of get, git, bzr or svn,
